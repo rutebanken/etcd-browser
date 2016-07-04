@@ -2,14 +2,14 @@
 var app = angular.module("app", ["xeditable","ngCookies"]);
 
 app.controller('NodeCtrl', ['$scope','$http','$cookies', function($scope,$http,$cookies) {
-  var keyPrefix = '/v2/keys',
-      statsPrefix = '/v2/stats';
+  var keyPrefix = '/admin/etcdbrowser/v2/keys',
+      statsPrefix = '/admin/etcdbrowser/v2/stats';
 
   if($cookies.urlPrefix){
+    <!-- Need to hard code admin path, as it does not get picked up after rewriting -->
     $scope.urlPrefix = $cookies.urlPrefix;
   } else {
-    <!-- Need to hard code admin path, as it does not get picked up after rewriting -->
-    $scope.urlPrefix = ('https:' == document.location.protocol ? 'https://' : 'http://') + document.location.host + "/admin/etcdbrowser/";
+    $scope.urlPrefix = ('https:' == document.location.protocol ? 'https://' : 'http://') + document.location.host;
   }
 
   $scope.getPrefix = function() {
