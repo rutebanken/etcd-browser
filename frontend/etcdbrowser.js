@@ -8,7 +8,8 @@ app.controller('NodeCtrl', ['$scope','$http','$cookies', function($scope,$http,$
   if($cookies.urlPrefix){
     $scope.urlPrefix = $cookies.urlPrefix;
   } else {
-    $scope.urlPrefix = ('https:' == document.location.protocol ? 'https://' : 'http://') + document.location.host + document.location.pathname;
+    <!-- Need to hard code admin path, as it does not get picked up after rewriting -->
+    $scope.urlPrefix = ('https:' == document.location.protocol ? 'https://' : 'http://') + document.location.host + "/admin/etcdbrowser/";
   }
 
   $scope.getPrefix = function() {
